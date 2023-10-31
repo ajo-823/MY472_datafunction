@@ -1,0 +1,42 @@
+---
+title: "Longest Tooth Function Documentation"
+author: "Alexis Orrick"
+date: "2023-10-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+```
+
+## Longest Tooth Function
+
+The Longest Tooth Function (see below) is meant to be used on the "ToothGrowth" pre-loaded R dataset.The function takes two arguments: Data for the dataset (ToothGrowth) and supptype for the supplement type (used on teeth in this experiment).The function returns the row of data for the longest tooth within the given supplement type.
+
+```{r}
+longest_tooth <- function(data,supptype) {
+  library("tidyverse")
+  data_transformed <- data %>%
+    drop_na() %>%
+    filter(supp == supptype) %>%
+    filter(len == max(len)) %>%
+  return(data_transformed)
+}
+```
+
+There are two supplement types in this dataset which can be used for the second argument: VC and OJ.
+
+This is the row selected when VC is entered in the longest_tooth function:
+
+```{r}
+data("ToothGrowth")
+longest_VC <- longest_tooth(ToothGrowth,"VC")
+longest_VC
+```
+This is the row selected when OJ is entered in the longest_tooth function:
+
+```{r}
+longest_OJ <- longest_tooth(ToothGrowth,"OJ")
+longest_OJ
+```
